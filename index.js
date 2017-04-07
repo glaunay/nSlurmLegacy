@@ -50,7 +50,7 @@ var _listSlurmJobID = function() {
         // squeue results
         var squeueIDs = ('' + stdout).replace(/\"/g, '');
         // regex
-        var reg_NslurmID = new RegExp ('^ardockTask_[a-z0-9-]+_hex_[0-9]{1,2}', 'i');
+        var reg_NslurmID = new RegExp ('^ardockTask_[a-z0-9-]+_hex_{0,1}[0-9]{0,2}', 'i');
         var reg_slurmID = new RegExp ('[0-9]+$');
 
         // for each job in the squeue
@@ -216,9 +216,14 @@ module.exports = {
         var emitter = new events.EventEmitter();
         _squeue().on('data', function (d) {
             for (var key in jobsArray) {
+                var curr_job =jobsArray[key];
+                if(curr_job.status === "CREATED"){
+                    continue;
+                }
+
                 if (d.nameUUID.indexOf(key) === -1) { // if key is not found in squeue
-                    var jobTmp = clone(jobsArray[key]); // deepcopy of the disappeared job
-                    jobTmp.obj.emitter = jobsArray[key].obj.emitter; // keep same emitter reference
+                    var jobTmp = clone(curr_job); // deepcopy of the disappeared job
+                    jobTmp.obj.emitter = curr_job.obj.emitter; // keep same emitter reference
                     delete jobsArray[key];
                     // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
                     // console.log(jobTmp);
@@ -280,11 +285,13 @@ module.exports = {
         self.jobsView();
 
         newJob.emitter.on('submitted', function(j){
+            console.log("-----<<<<<<<<<");
+            console.log(j);
             jobsArray[j.id].status = 'SUBMITTED';
             self.jobsView();
         }).on('jobStart', function (job) {
             // next lines for tests on squeueReport() :
-            // self.squeueReport().on('end', function (interface) {    
+            // self.squeueReport().on('end', function (interface) {
             //     console.log(interface.matchPartition('ws-'));
             // });
         })

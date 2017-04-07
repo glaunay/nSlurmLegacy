@@ -280,8 +280,11 @@ Job.prototype.submit = function(fname) {
     console.log('sbatchArgArray : >' + sbatchArgArray + '<');
     console.log('this.workdir : >' + this.workDir + '<');
     var process = spawn(this.sbatch, sbatchArgArray, { 'cwd' : this.workDir });
+    process.on('exit', function () {
+        self.emitter.emit('submitted', self);
+    });
 
-    this.emitter.emit('submitted', this);
+
 }
 
 Job.prototype.fork = function(fname) {
