@@ -184,6 +184,7 @@ var Job = function (opt) {
     this.cwd = 'cwd' in opt ? opt.cwd : null;
     this.cwdClone = 'cwdClone' in opt ? opt.cwdClone : false;
 
+    this.MIA_jokers = 3; //  Number of time a job is allowed to not be found in the squeue
 
     //console.dir(opt);
     this.sbatch = 'sbatch' in opt ? opt.sbatch : 'sbatch';

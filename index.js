@@ -222,15 +222,24 @@ module.exports = {
                 }
 
                 if (d.nameUUID.indexOf(key) === -1) { // if key is not found in squeue
-                    var jobTmp = clone(curr_job); // deepcopy of the disappeared job
-                    jobTmp.obj.emitter = curr_job.obj.emitter; // keep same emitter reference
-                    delete jobsArray[key];
+                    curr_job.MIA_jokers -= 1;
+                    console.log('The job "' + key + '" missing from queue! Jokers left is ' +  curr_job.MIA_jokers);
+                    if (curr_job.MIA_jokers === 0) {
+                        var jobTmp = clone(curr_job); // deepcopy of the disappeared job
+                        jobTmp.obj.emitter = curr_job.obj.emitter; // keep same emitter reference
+                        delete jobsArray[key];
                     // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
                     // console.log(jobTmp);
-                    jobTmp.obj.emitter.emit('lostJob', 'The job is not in the queue !', jobTmp.obj);
+                        jobTmp.obj.emitter.emit('lostJob', 'The job "' + key + '" is not in the queue !', jobTmp.obj);
+                    }
+                } else{
+                    if (curr_job.MIA_jokers < 3)
+                        console.log('Job "' + key + '" found BACK ! Jokers count restored');
+
+                    curr_job.MIA_jokers = 3;
                 }
             }
-            emitter.emit('');
+            //emitter.emit('');
         }).on('errSqueue', function (err) {
             console.log('ERROR with _squeue() method in nslurm : ');
             console.log(err);
