@@ -294,8 +294,7 @@ module.exports = {
         self.jobsView();
 
         newJob.emitter.on('submitted', function(j){
-            console.log("-----<<<<<<<<<");
-            console.log(j);
+            //console.log(j);
             jobsArray[j.id].status = 'SUBMITTED';
             self.jobsView();
         }).on('jobStart', function (job) {
