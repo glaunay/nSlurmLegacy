@@ -1,93 +1,26 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "nslurm@^0.6.1",
-        "scope": null,
-        "escapedName": "nslurm",
-        "name": "nslurm",
-        "rawSpec": "^0.6.1",
-        "spec": ">=0.6.1 <0.7.0",
-        "type": "range"
-      },
-      "/data/www_dev/ardock/lib/melanie/ardockGPU_implement"
-    ]
-  ],
-  "_from": "nslurm@>=0.6.1 <0.7.0",
-  "_id": "nslurm@0.6.1",
-  "_inCache": true,
-  "_location": "/nslurm",
-  "_nodeVersion": "6.9.5",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/nslurm-0.6.1.tgz_1487173325839_0.2752990515436977"
-  },
-  "_npmUser": {
-    "name": "glaunay",
-    "email": "pitooon@gmail.com"
-  },
-  "_npmVersion": "3.10.10",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "nslurm@^0.6.1",
-    "scope": null,
-    "escapedName": "nslurm",
-    "name": "nslurm",
-    "rawSpec": "^0.6.1",
-    "spec": ">=0.6.1 <0.7.0",
-    "type": "range"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/nslurm/-/nslurm-0.6.1.tgz",
-  "_shasum": "3668d66c457489335425e03ad0fc60711bfe07c1",
-  "_shrinkwrap": null,
-  "_spec": "nslurm@^0.6.1",
-  "_where": "/data/www_dev/ardock/lib/melanie/ardockGPU_implement",
-  "author": {
-    "name": "glaunay, pitooon@gmail.com and mgarnier, melanie.mc.garnier@gmail.com"
-  },
-  "bugs": {
-    "url": "https://github.com/glaunay/nSlurm/issues"
-  },
-  "dependencies": {
-    "node-uuid": "^1.4.7"
-  },
-  "description": "A library to communicate with a slurm scheduler/engine on HPC",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "3668d66c457489335425e03ad0fc60711bfe07c1",
-    "tarball": "https://registry.npmjs.org/nslurm/-/nslurm-0.6.1.tgz"
-  },
-  "gitHead": "6f00fb389a2840090d3e0e81f03e9fd997b06914",
-  "homepage": "https://github.com/glaunay/nSlurm#readme",
-  "keywords": [
-    "node",
-    "slurm"
-  ],
-  "license": "BSD",
+  "name": "nslurmardocklegacy",
+  "version": "1.0.1",
+  "description": "Ardock-frozen library to communicate with a slurm scheduler/engine on HPC.",
   "main": "index.js",
-  "maintainers": [
-    {
-      "name": "glaunay",
-      "email": "pitooon@gmail.com"
-    },
-    {
-      "name": "melaniegarnier",
-      "email": "melanie.mc.garnier@gmail.com"
-    }
-  ],
-  "name": "nslurm",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/glaunay/nSlurm.git"
+  "directories": {
+    "test": "test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.0.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glaunay/nSlurmLegacy.git"
+  },
+  "author": "M.Garnier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glaunay/nSlurmLegacy/issues"
+  },
+  "homepage": "https://github.com/glaunay/nSlurmLegacy#readme",
+  "dependencies": {
+    "clone": "^2.1.1",
+    "node-uuid": "^1.4.8"
+  }
 }
