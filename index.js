@@ -289,6 +289,8 @@ module.exports = {
             'modules' : 'modules' in jobOpt ? jobOpt.modules : null,
             'gres' : 'gres' in jobOpt ? jobOpt.gres : null
         });
+	if ('gid' in jobOpt) newJob['gid'] = jobOpt.gid;
+        if ('uid' in jobOpt) newJob['uid'] = jobOpt.uid;
         jobsArray[newJob.id] = { 'obj' : newJob, 'status' : 'CREATED' };
 
         self.jobsView();
