@@ -276,8 +276,6 @@ module.exports = {
             'rootDir' : cacheDir,
             'adress' : TCPip, 'port' : TCPport,
             'ttl' : 50000,
-            'gid' : 'gid' in jobOpt ? jobOpt.gid : null,
-            'uid' : 'uid' in jobOpt ? jobOpt.uid : null,
             'partition' : 'partition' in jobOpt ? jobOpt.partition : null,
             'qos' : 'qos' in  jobOpt ? jobOpt.qos : null,
             'cmd' : 'cmd' in jobOpt ? jobOpt.cmd : null,
